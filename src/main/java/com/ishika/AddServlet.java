@@ -16,8 +16,12 @@ public class AddServlet extends HttpServlet
 		int j = Integer.parseInt(req.getParameter("num2"));
 		int k = i + j ;
 		
-		req.setAttribute("k", k);
-		RequestDispatcher rd = req.getRequestDispatcher("sq");
-		rd.forward(req, res);
+		
+//		req.setAttribute("k", k);
+//		RequestDispatcher rd = req.getRequestDispatcher("sq");
+//		rd.forward(req, res);
+		
+		res.sendRedirect("sq?k=" + k); // sending response to client to go to sq servlet (URL Rewriting)
+		
 	}
 }

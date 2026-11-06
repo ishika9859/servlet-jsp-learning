@@ -12,9 +12,12 @@ import com.sun.net.httpserver.HttpServer;
 public class SqServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req , HttpServletResponse res) throws IOException {
 		
-		int k = (int)req.getAttribute("k");  //return an object that's why typeCasting to integer
+		int k = Integer.parseInt(req.getParameter("k"));  //return an object that's why typeCasting to integer
 		k = k*k;
 		PrintWriter out = res.getWriter();
 		out.println("square is  :" + k);
+		
+//		PrintWriter out = res.getWriter();
+//		out.println("square is called");
 	}
 }
