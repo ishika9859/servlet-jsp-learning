@@ -6,13 +6,17 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sun.net.httpserver.HttpServer;
 
 public class SqServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req , HttpServletResponse res) throws IOException {
 		
-		int k = Integer.parseInt(req.getParameter("k"));  //return an object that's why typeCasting to integer
+//		int k = Integer.parseInt(req.getParameter("k"));  //return an object that's why typeCasting to integer
+		
+		HttpSession session = req.getSession();
+		int k = (int)session.getAttribute("val");
 		k = k*k;
 		PrintWriter out = res.getWriter();
 		out.println("square is  :" + k);

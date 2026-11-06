@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class AddServlet extends HttpServlet
 {
@@ -21,7 +22,12 @@ public class AddServlet extends HttpServlet
 //		RequestDispatcher rd = req.getRequestDispatcher("sq");
 //		rd.forward(req, res);
 		
-		res.sendRedirect("sq?k=" + k); // sending response to client to go to sq servlet (URL Rewriting)
+		
+//		res.sendRedirect("sq?k=" + k); // sending response to client to go to sq servlet (URL Rewriting)
+		
+		HttpSession session = req.getSession();
+		session.setAttribute("val", k);
+		res.sendRedirect("sq");
 		
 	}
 }
