@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,8 +26,13 @@ public class AddServlet extends HttpServlet
 		
 //		res.sendRedirect("sq?k=" + k); // sending response to client to go to sq servlet (URL Rewriting)
 		
-		HttpSession session = req.getSession();
-		session.setAttribute("val", k);
+//		HttpSession session = req.getSession();
+//		session.setAttribute("val", k);
+//		res.sendRedirect("sq");
+		
+		
+		Cookie cookie = new Cookie("val" , k +"");
+		res.addCookie(cookie);
 		res.sendRedirect("sq");
 		
 	}
