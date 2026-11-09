@@ -19,7 +19,12 @@ public class video extends HttpServlet{
 		}
 		
 		PrintWriter out = res.getWriter();
-		out.println("video is here");
+		out.println("<iframe width=\"560\" height=\"315\" "
+				+ "src=\"https://www.youtube.com/embed/OuBUUkQfBYM?si=qJOBmBhNf63iASP7\" "
+				+ "title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; "
+				+ "autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; "
+				+ "web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen>"
+				+ "</iframe>");
 		
 	}
 }
