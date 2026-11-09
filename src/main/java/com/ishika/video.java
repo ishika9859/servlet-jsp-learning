@@ -12,9 +12,10 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/video")
 public class video extends HttpServlet{
 	public void doGet(HttpServletRequest req , HttpServletResponse res) throws IOException {
-		HttpSession session = req.getSession();
+		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		
-		if(session.getAttribute("username")==null) {
+		HttpSession session = req.getSession(false);
+		if(session == null || session.getAttribute("username")==null) {
 			res.sendRedirect("login.html");
 		}
 		

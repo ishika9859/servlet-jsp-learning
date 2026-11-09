@@ -12,9 +12,10 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/welcome")
 public class welcome extends HttpServlet{
 	public void doGet(HttpServletRequest req , HttpServletResponse res) throws IOException {
-		HttpSession session = req.getSession();
 		
-		if(session.getAttribute("username")==null) {
+		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		HttpSession session = req.getSession(false);
+		if(session == null || session.getAttribute("username")==null) {
 			res.sendRedirect("login.html");
 		}
 		
